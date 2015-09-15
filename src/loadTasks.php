@@ -20,7 +20,7 @@ trait loadTasks
      * Allows to start a service.
      *
      * @param   string                          $serviceManager Service manager to use. Optional.
-     * @param   string[]                        $service        Service. Optional.
+     * @param   string                          $service        Service. Optional.
      * @param   CommandBuilderFactoryInterface  $factory        CommandBuilder factory. Optional.
      */
     protected function taskServiceStart($serviceManager = null, $service = null, CommandBuilderFactoryInterface $factory = null)
@@ -32,7 +32,7 @@ trait loadTasks
      * Allows to stop a service.
      *
      * @param   string                          $serviceManager Service manager to use. Optional.
-     * @param   string[]                        $service        Service. Optional.
+     * @param   string                          $service        Service. Optional.
      * @param   CommandBuilderFactoryInterface  $factory        CommandBuilder factory. Optional.
      */
     protected function taskServiceStop($serviceManager = null, $service = null, CommandBuilderFactoryInterface $factory = null)
@@ -44,7 +44,7 @@ trait loadTasks
      * Allows to restart a service.
      *
      * @param   string                          $serviceManager Service manager to use. Optional.
-     * @param   string[]                        $service        Service. Optional.
+     * @param   string                          $service        Service. Optional.
      * @param   CommandBuilderFactoryInterface  $factory        CommandBuilder factory. Optional.
      */
     protected function taskServiceRestart($serviceManager = null, $service = null, CommandBuilderFactoryInterface $factory = null)
