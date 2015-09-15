@@ -17,7 +17,7 @@ interface CommandBuilderInterface
     /**
      * Sets the action to "start" and specifies the service.
      *
-     * @param   string[]                $service    Service to start.
+     * @param   string                  $service    Service to start.
      * @return  CommandBuilderInterface
      */
     public function start($service);
@@ -25,7 +25,7 @@ interface CommandBuilderInterface
     /**
      * Sets the action to "stop" and specifies the service.
      *
-     * @param   string[]                $service    Service to start.
+     * @param   string                  $service    Service to start.
      * @return  CommandBuilderInterface
      */
     public function stop($service);
@@ -33,7 +33,7 @@ interface CommandBuilderInterface
     /**
      * Sets the action to "restart" and specifies the service.
      *
-     * @param   string[]                $service    Service to start.
+     * @param   string                  $service    Service to start.
      * @return  CommandBuilderInterface
      */
     public function restart($service);
