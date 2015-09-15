@@ -1,6 +1,9 @@
 # Robo System Service Tasks
 
 [![License](https://img.shields.io/packagist/l/falc/robo-system-service.svg?style=flat-square)](LICENSE)
+[![Build Status](https://img.shields.io/travis/Falc/RoboSystemService.svg?style=flat-square)](https://travis-ci.org/Falc/RoboSystemService)
+[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/Falc/RoboSystemService.svg?style=flat-square)](https://scrutinizer-ci.com/g/Falc/RoboSystemService/)
+[![Quality Score](https://img.shields.io/scrutinizer/g/Falc/RoboSystemService.svg?style=flat-square)](https://scrutinizer-ci.com/g/Falc/RoboSystemService/)
 
 Collection of tasks for interacting with system service managers.
 
