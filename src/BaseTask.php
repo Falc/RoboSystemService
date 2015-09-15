@@ -53,7 +53,7 @@ abstract class BaseTask extends RoboBaseTask
      * Constructor.
      *
      * @param   string                          $serviceManager Service manager to use. Optional.
-     * @param   string[]                        $service        Service. Optional.
+     * @param   string                          $service        Service. Optional.
      * @param   CommandBuilderFactoryInterface  $factory        CommandBuilder factory. Optional.
      */
     public function __construct($serviceManager = null, $service = null, CommandBuilderFactoryInterface $factory = null)
