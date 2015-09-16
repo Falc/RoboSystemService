@@ -51,4 +51,28 @@ trait loadTasks
     {
         return new Restart($serviceManager, $service, $factory);
     }
+
+    /**
+     * Allows to enable a service.
+     *
+     * @param   string                          $serviceManager Service manager to use. Optional.
+     * @param   string                          $service        Service. Optional.
+     * @param   CommandBuilderFactoryInterface  $factory        CommandBuilder factory. Optional.
+     */
+    protected function taskServiceEnable($serviceManager = null, $service = null, CommandBuilderFactoryInterface $factory = null)
+    {
+        return new Enable($serviceManager, $service, $factory);
+    }
+
+    /**
+     * Allows to disable a service.
+     *
+     * @param   string                          $serviceManager Service manager to use. Optional.
+     * @param   string                          $service        Service. Optional.
+     * @param   CommandBuilderFactoryInterface  $factory        CommandBuilder factory. Optional.
+     */
+    protected function taskServiceDisable($serviceManager = null, $service = null, CommandBuilderFactoryInterface $factory = null)
+    {
+        return new Disable($serviceManager, $service, $factory);
+    }
 }

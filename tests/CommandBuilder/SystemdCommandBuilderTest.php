@@ -69,6 +69,36 @@ class SystemdCommandBuilderTest extends BaseTestCase
         $this->assertEquals($expected, $command);
     }
 
+    public function testEnableWithoutService()
+    {
+        $this->setExpectedException('\Exception');
+        $this->systemd->enable(null);
+    }
+
+    public function testEnable()
+    {
+        $this->systemd->enable('service1');
+
+        $command = $this->systemd->getCommand();
+        $expected = 'systemctl enable service1';
+        $this->assertEquals($expected, $command);
+    }
+
+    public function testDisableWithoutService()
+    {
+        $this->setExpectedException('\Exception');
+        $this->systemd->disable(null);
+    }
+
+    public function testDisable()
+    {
+        $this->systemd->disable('service1');
+
+        $command = $this->systemd->getCommand();
+        $expected = 'systemctl disable service1';
+        $this->assertEquals($expected, $command);
+    }
+
     public function testQuiet()
     {
         $this->systemd->start('service1')->quiet();

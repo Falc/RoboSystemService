@@ -85,6 +85,36 @@ class SystemdCommandBuilder implements CommandBuilderInterface
     /**
      * {@inheritdoc}
      */
+    public function enable($service)
+    {
+        if (empty($service)) {
+            throw new \Exception('No service selected to be enabled');
+        }
+
+        $this->service = $service;
+        $this->action = 'enable';
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function disable($service)
+    {
+        if (empty($service)) {
+            throw new \Exception('No service selected to be disabled');
+        }
+
+        $this->service = $service;
+        $this->action = 'disable';
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function quiet()
     {
         $this->options[] = '-q';

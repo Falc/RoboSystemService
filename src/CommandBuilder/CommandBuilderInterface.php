@@ -25,7 +25,7 @@ interface CommandBuilderInterface
     /**
      * Sets the action to "stop" and specifies the service.
      *
-     * @param   string                  $service    Service to start.
+     * @param   string                  $service    Service to stop.
      * @return  CommandBuilderInterface
      */
     public function stop($service);
@@ -33,10 +33,26 @@ interface CommandBuilderInterface
     /**
      * Sets the action to "restart" and specifies the service.
      *
-     * @param   string                  $service    Service to start.
+     * @param   string                  $service    Service to restart.
      * @return  CommandBuilderInterface
      */
     public function restart($service);
+
+    /**
+     * Sets the action to "enable" and specifies the service.
+     *
+     * @param   string                  $service    Service to enable.
+     * @return  CommandBuilderInterface
+     */
+    public function enable($service);
+
+    /**
+     * Sets the action to "disable" and specifies the service.
+     *
+     * @param   string                  $service    Service to disable.
+     * @return  CommandBuilderInterface
+     */
+    public function disable($service);
 
     /**
      * Sets the option "quiet".
