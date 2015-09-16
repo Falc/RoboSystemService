@@ -125,6 +125,68 @@ $this->taskSshExec('remote.example.com')
     ->run();
 ```
 
+### Enable
+
+Enabling a service:
+
+``` php
+$this->taskServiceEnable()
+    ->serviceManager('systemd')
+    ->service('service1')
+    ->run();
+```
+
+Compact form:
+
+```
+$this->taskServiceEnable('systemd', 'service1')->run();
+```
+
+You can combine it with `taskSshExec()` to enable services in a remote server:
+
+```php
+$enableTask = $this->taskServiceEnable()
+    ->serviceManager('systemd')
+    ->service('service1');
+
+$this->taskSshExec('remote.example.com')
+    ->remoteDir('/home/user')
+    ->printed(false) // Do not display output
+    ->exec($enableTask)
+    ->run();
+```
+
+### Disable
+
+Enabling a service:
+
+``` php
+$this->taskServiceDisable()
+    ->serviceManager('systemd')
+    ->service('service1')
+    ->run();
+```
+
+Compact form:
+
+```
+$this->taskServiceDisable('systemd', 'service1')->run();
+```
+
+You can combine it with `taskSshExec()` to disable services in a remote server:
+
+```php
+$disableTask = $this->taskServiceDisable()
+    ->serviceManager('systemd')
+    ->service('service1');
+
+$this->taskSshExec('remote.example.com')
+    ->remoteDir('/home/user')
+    ->printed(false) // Do not display output
+    ->exec($disableTask)
+    ->run();
+```
+
 ## Methods
 
 All the tasks implement these methods:
