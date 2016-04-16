@@ -36,4 +36,18 @@ class CommandBuilderFactoryTest extends BaseTestCase
 
         $this->assertInstanceOf('Falc\Robo\Service\CommandBuilder\CommandBuilderInterface', $builder);
     }
+
+    public function testCreateSysVinitDebianCommandBuilder()
+    {
+        $builder = $this->factory->create('sysvinit-debian');
+
+        $this->assertInstanceOf('Falc\Robo\Service\CommandBuilder\CommandBuilderInterface', $builder);
+    }
+
+    public function testCreateSysVinitRedHatCommandBuilder()
+    {
+        $builder = $this->factory->create('sysvinit-redhat');
+
+        $this->assertInstanceOf('Falc\Robo\Service\CommandBuilder\CommandBuilderInterface', $builder);
+    }
 }

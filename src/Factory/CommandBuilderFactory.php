@@ -25,6 +25,10 @@ class CommandBuilderFactory implements CommandBuilderFactoryInterface
         switch ($serviceManager) {
             case 'systemd':
                 return new CommandBuilder\SystemdCommandBuilder();
+            case 'sysvinit-debian':
+                return new CommandBuilder\SysVinitDebianCommandBuilder();
+            case 'sysvinit-redhat':
+                return new CommandBuilder\SysVinitRedHatCommandBuilder();
             default:
                 throw new \Exception('Not supported');
         }
