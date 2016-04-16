@@ -9,8 +9,6 @@
 
 namespace Falc\Robo\Service\CommandBuilder;
 
-use Falc\Robo\Service\CommandBuilder\CommandBuilderInterface;
-
 /**
  * Systemd command builder.
  */

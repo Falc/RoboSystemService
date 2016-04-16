@@ -10,7 +10,6 @@
 namespace Falc\Robo\Service\Factory;
 
 use Falc\Robo\Service\CommandBuilder;
-use Falc\Robo\Service\Factory\CommandBuilderFactoryInterface;
 
 /**
  * CommandBuilder factory.
