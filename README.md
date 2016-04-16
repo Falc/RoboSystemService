@@ -200,3 +200,4 @@ Every task requires to set a service manager either in the constructor or using 
 
 At the moment these are the supported service managers:
 * [systemd](http://www.freedesktop.org/wiki/Software/systemd/)
+* [SysVinit](http://savannah.nongnu.org/projects/sysvinit)
