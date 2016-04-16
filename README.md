@@ -9,7 +9,7 @@ Collection of tasks for interacting with system service managers.
 
 ## Requirements
 
-+ [Robo](http://robo.li/) 0.5.*
++ [Robo](http://robo.li/) ~0.5 (0.5.0 or higher)
 
 ## Installation
 
