@@ -29,7 +29,7 @@ class DisableTest extends BaseTestCase
 
     public function testWithoutServiceManager()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
 
         $task = $this->taskServiceDisable(null, null, $this->factory)
             ->getCommand();

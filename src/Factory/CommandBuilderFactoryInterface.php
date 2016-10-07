@@ -19,6 +19,7 @@ interface CommandBuilderFactoryInterface
      *
      * @param   string $serviceManager Service manager.
      * @return  \Falc\Robo\Service\CommandBuilder\CommandBuilderInterface
+     * @throws \InvalidArgumentException
      */
     public function create($serviceManager);
 }

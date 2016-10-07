@@ -20,7 +20,7 @@ class SysVinitDebianCommandBuilder extends SysVinitCommandBuilder
     public function enable($service)
     {
         if (empty($service)) {
-            throw new \Exception('No service selected to be enabled');
+            throw new \InvalidArgumentException('No service selected to be enabled');
         }
 
         $this->cmd = 'update-rc.d';
@@ -36,7 +36,7 @@ class SysVinitDebianCommandBuilder extends SysVinitCommandBuilder
     public function disable($service)
     {
         if (empty($service)) {
-            throw new \Exception('No service selected to be disabled');
+            throw new \InvalidArgumentException('No service selected to be disabled');
         }
 
         $this->cmd = 'update-rc.d';

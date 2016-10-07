@@ -29,7 +29,7 @@ class StartTest extends BaseTestCase
 
     public function testWithoutServiceManager()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
 
         $task = $this->taskServiceStart(null, null, $this->factory)
             ->getCommand();

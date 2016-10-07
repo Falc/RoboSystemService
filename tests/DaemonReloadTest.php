@@ -2,21 +2,21 @@
 /**
  * This file is part of RoboSystemService.
  *
- * @author      Aitor García Martínez (Falc) <aitor.falc@gmail.com>
- * @copyright   2015 Aitor García Martínez (Falc) <aitor.falc@gmail.com>
+ * @author      Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ * @copyright   2015 Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
  * @license     MIT
  */
 
 namespace Falc\Robo\Service\Test;
 
-use Falc\Robo\Service\Stop;
+use Falc\Robo\Service\Start;
 use Falc\Robo\Service\Test\BaseTestCase;
 use Robo\Result;
 
 /**
- * Stop tests.
+ * Daemon reload tests.
  */
-class StopTest extends BaseTestCase
+class DaemonReloadTest extends BaseTestCase
 {
     protected $builder;
     protected $factory;
@@ -31,69 +31,52 @@ class StopTest extends BaseTestCase
     {
         $this->setExpectedException('\InvalidArgumentException');
 
-        $task = $this->taskServiceStop(null, 'service1', $this->factory)
+        $task = $this->taskServiceDaemonReload(null, $this->factory)
             ->getCommand();
     }
 
-    public function testWithoutService()
+    public function testDaemonReload()
     {
-        // It must call stop() without service
+        // It must call daemonReload()
         $this->builder
             ->expects($this->once())
-            ->method('stop')
-            ->with($this->equalTo(null));
+            ->method('daemonReload');
 
-        $this->taskServiceStop(null, null, $this->factory)
+        $this->taskServiceDaemonReload(null, $this->factory)
             ->serviceManager('myservicemanager')
-            ->getCommand();
-    }
-
-    public function testStop()
-    {
-        $service = 'service1';
-
-        // It must call stop()
-        $this->builder
-            ->expects($this->once())
-            ->method('stop')
-            ->with($this->equalTo($service));
-
-        $this->taskServiceStop(null, null, $this->factory)
-            ->serviceManager('myservicemanager')
-            ->service($service)
             ->getCommand();
     }
 
     public function testQuiet()
     {
-        // It must call stop()
+        // It must call daemonReload()
         $this->builder
             ->expects($this->once())
-            ->method('stop');
+            ->method('daemonReload');
 
         // It must call quiet()
         $this->builder
             ->expects($this->once())
             ->method('quiet');
 
-        $this->taskServiceStop(null, null, $this->factory)
+        $this->taskServiceDaemonReload(null, $this->factory)
             ->serviceManager('myservicemanager')
             ->getCommand();
     }
 
     public function testVerbose()
     {
-        // It must call stop()
+        // It must call daemonReload()
         $this->builder
             ->expects($this->once())
-            ->method('stop');
+            ->method('daemonReload');
 
         // It must NOT call quiet()
         $this->builder
             ->expects($this->never())
             ->method('quiet');
 
-        $this->taskServiceStop(null, null, $this->factory)
+        $this->taskServiceDaemonReload(null, $this->factory)
             ->serviceManager('myservicemanager')
             ->verbose()
             ->getCommand();
@@ -101,22 +84,19 @@ class StopTest extends BaseTestCase
 
     public function testOneLiner()
     {
-        $service = 'service1';
-
-        // It must call stop()
+        // It must call daemonReload()
         $this->builder
             ->expects($this->once())
-            ->method('stop')
-            ->with($this->equalTo($service));
+            ->method('daemonReload');
 
-        $this->taskServiceStop('myservicemanager', $service, $this->factory)->getCommand();
+        $this->taskServiceDaemonReload('myservicemanager', $this->factory)->getCommand();
     }
 
     public function testRun()
     {
         // Task mock
-        $task = $this->getMockBuilder('Falc\Robo\Service\Stop')
-            ->setConstructorArgs([null, null, $this->factory])
+        $task = $this->getMockBuilder('Falc\Robo\Service\DaemonReload')
+            ->setConstructorArgs([null, $this->factory])
             ->setMethods(['executeCommand'])
             ->getMock();
 
@@ -128,7 +108,6 @@ class StopTest extends BaseTestCase
 
         $task
             ->serviceManager('myservicemanager')
-            ->service('service1')
             ->run();
     }
 }

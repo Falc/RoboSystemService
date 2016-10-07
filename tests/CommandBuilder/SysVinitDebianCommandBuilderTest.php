@@ -9,6 +9,7 @@
 
 namespace Falc\Robo\Service\Test\CommandBuilder;
 
+use Falc\Robo\Service\CommandBuilder\SysVinitCommandBuilder;
 use Falc\Robo\Service\CommandBuilder\SysVinitDebianCommandBuilder;
 use Falc\Robo\Service\Test\BaseTestCase;
 
@@ -17,6 +18,9 @@ use Falc\Robo\Service\Test\BaseTestCase;
  */
 class SysVinitDebianCommandBuilderTest extends BaseTestCase
 {
+    /**
+     * @var SysVinitCommandBuilder
+     */
     protected $sysvinit;
 
     protected function setUp()
@@ -97,6 +101,15 @@ class SysVinitDebianCommandBuilderTest extends BaseTestCase
         $command = $this->sysvinit->getCommand();
         $expected = 'update-rc.d -f service1 remove';
         $this->assertEquals($expected, $command);
+    }
+
+    /**
+     * @expectedException \BadMethodCallException
+     * @expectedExceptionMessage Action "daemon-reload" not supported for SysVinit
+     */
+    public function testDaemonReload()
+    {
+        $this->sysvinit->daemonReload();
     }
 
     public function testQuiet()

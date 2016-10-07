@@ -29,7 +29,7 @@ class RestartTest extends BaseTestCase
 
     public function testWithoutServiceManager()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
 
         $task = $this->taskServiceRestart(null, 'service1', $this->factory)
             ->getCommand();

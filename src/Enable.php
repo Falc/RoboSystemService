@@ -29,11 +29,12 @@ class Enable extends BaseTask implements CommandInterface
 {
     /**
      * {@inheritdoc}
+     * @throws \InvalidArgumentException
      */
     public function getCommand()
     {
         if ($this->builder === null) {
-            throw new \Exception('Service manager not defined');
+            throw new \InvalidArgumentException('Service manager not defined');
         }
 
         $this->builder->enable($this->service);
@@ -47,6 +48,7 @@ class Enable extends BaseTask implements CommandInterface
 
     /**
      * {@inheritdoc}
+     * @throws \InvalidArgumentException
      */
     public function run()
     {

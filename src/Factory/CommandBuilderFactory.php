@@ -29,7 +29,7 @@ class CommandBuilderFactory implements CommandBuilderFactoryInterface
             case 'sysvinit-redhat':
                 return new CommandBuilder\SysVinitRedHatCommandBuilder();
             default:
-                throw new \Exception('Not supported');
+                throw new \InvalidArgumentException('Not supported');
         }
     }
 }

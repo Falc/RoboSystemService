@@ -17,6 +17,9 @@ use Falc\Robo\Service\Test\BaseTestCase;
  */
 class SystemdCommandBuilderTest extends BaseTestCase
 {
+    /**
+     * @var SystemdCommandBuilder
+     */
     protected $systemd;
 
     protected function setUp()
@@ -96,6 +99,15 @@ class SystemdCommandBuilderTest extends BaseTestCase
 
         $command = $this->systemd->getCommand();
         $expected = 'systemctl disable service1';
+        $this->assertEquals($expected, $command);
+    }
+
+    public function testDaemonReload()
+    {
+        $this->systemd->daemonReload();
+
+        $command = $this->systemd->getCommand();
+        $expected = 'systemctl daemon-reload';
         $this->assertEquals($expected, $command);
     }
 

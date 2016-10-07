@@ -26,7 +26,7 @@ class CommandBuilderFactoryTest extends BaseTestCase
 
     public function testCreateUnsupportedBuilder()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
         $builder = $this->factory->create('myservicemanager');
     }
 

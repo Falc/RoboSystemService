@@ -29,7 +29,7 @@ class EnableTest extends BaseTestCase
 
     public function testWithoutServiceManager()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
 
         $task = $this->taskServiceEnable(null, null, $this->factory)
             ->getCommand();

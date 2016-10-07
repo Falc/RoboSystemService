@@ -29,11 +29,12 @@ class Start extends BaseTask implements CommandInterface
 {
     /**
      * {@inheritdoc}
+     * @throws \Exception
      */
     public function getCommand()
     {
         if ($this->builder === null) {
-            throw new \Exception('Service manager not defined');
+            throw new \InvalidArgumentException('Service manager not defined');
         }
 
         $this->builder->start($this->service);
@@ -47,6 +48,7 @@ class Start extends BaseTask implements CommandInterface
 
     /**
      * {@inheritdoc}
+     * @throws \Exception
      */
     public function run()
     {

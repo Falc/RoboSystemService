@@ -55,7 +55,7 @@ abstract class SysVinitCommandBuilder implements CommandBuilderInterface
     public function start($service)
     {
         if (empty($service)) {
-            throw new \Exception('No service selected to be started');
+            throw new \InvalidArgumentException('No service selected to be started');
         }
 
         $this->cmd = '/etc/init.d';
@@ -71,7 +71,7 @@ abstract class SysVinitCommandBuilder implements CommandBuilderInterface
     public function stop($service)
     {
         if (empty($service)) {
-            throw new \Exception('No service selected to be started');
+            throw new \InvalidArgumentException('No service selected to be started');
         }
 
         $this->cmd = '/etc/init.d';
@@ -87,7 +87,7 @@ abstract class SysVinitCommandBuilder implements CommandBuilderInterface
     public function restart($service)
     {
         if (empty($service)) {
-            throw new \Exception('No service selected to be started');
+            throw new \InvalidArgumentException('No service selected to be started');
         }
 
         $this->cmd = '/etc/init.d';
@@ -106,6 +106,15 @@ abstract class SysVinitCommandBuilder implements CommandBuilderInterface
      * {@inheritdoc}
      */
     abstract public function disable($service);
+
+    /**
+     * {@inheritdoc}
+     * @throws \BadMethodCallException
+     */
+    public function daemonReload()
+    {
+        throw new \BadMethodCallException('Action "daemon-reload" not supported for SysVinit');
+    }
 
     /**
      * {@inheritdoc}
