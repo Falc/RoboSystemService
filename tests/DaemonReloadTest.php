@@ -3,7 +3,7 @@
  * This file is part of RoboSystemService.
  *
  * @author      Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
- * @copyright   2015 Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ * @copyright   2016 Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
  * @license     MIT
  */
 

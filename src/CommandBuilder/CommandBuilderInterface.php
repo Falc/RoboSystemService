@@ -4,6 +4,10 @@
  *
  * @author      Aitor García Martínez (Falc) <aitor.falc@gmail.com>
  * @copyright   2015 Aitor García Martínez (Falc) <aitor.falc@gmail.com>
+ *
+ * @author      Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ * @copyright   2016 Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ *
  * @license     MIT
  */
 
@@ -17,7 +21,8 @@ interface CommandBuilderInterface
     /**
      * Sets the action to "start" and specifies the service.
      *
-     * @param   string                  $service    Service to start.
+     * @param   string $service Service to start.
+     *
      * @return  CommandBuilderInterface
      * @throws \InvalidArgumentException
      */
@@ -26,7 +31,8 @@ interface CommandBuilderInterface
     /**
      * Sets the action to "stop" and specifies the service.
      *
-     * @param   string                  $service    Service to stop.
+     * @param   string $service Service to stop.
+     *
      * @return  CommandBuilderInterface
      * @throws \InvalidArgumentException
      */
@@ -35,7 +41,8 @@ interface CommandBuilderInterface
     /**
      * Sets the action to "restart" and specifies the service.
      *
-     * @param   string                  $service    Service to restart.
+     * @param   string $service Service to restart.
+     *
      * @return  CommandBuilderInterface
      * @throws \InvalidArgumentException
      */
@@ -44,7 +51,8 @@ interface CommandBuilderInterface
     /**
      * Sets the action to "enable" and specifies the service.
      *
-     * @param   string                  $service    Service to enable.
+     * @param   string $service Service to enable.
+     *
      * @return  CommandBuilderInterface
      * @throws \InvalidArgumentException
      */
@@ -53,7 +61,8 @@ interface CommandBuilderInterface
     /**
      * Sets the action to "disable" and specifies the service.
      *
-     * @param   string                  $service    Service to disable.
+     * @param   string $service Service to disable.
+     *
      * @return  CommandBuilderInterface
      * @throws \InvalidArgumentException
      */
