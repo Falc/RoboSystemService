@@ -189,9 +189,7 @@ $this->taskSshExec('remote.example.com')
 
 ### Daemon reload
 
-This task supported only for systemd.
-
-Enabling a service:
+This task is supported only for systemd.
 
 ``` php
 $this->taskServiceDaemonReload()
@@ -202,13 +200,13 @@ $this->taskServiceDaemonReload()
 Compact form:
 
 ```
-$this->taskServiceDisable('systemd')->run();
+$this->taskServiceDaemonReload('systemd')->run();
 ```
 
 You can combine it with `taskSshExec()` to reload systemd manager configuration in a remote server:
 
 ```php
-$daemonReloadTask = $this->taskServiceDisable()
+$daemonReloadTask = $this->taskServiceDaemonReload()
     ->serviceManager('systemd');
 
 $this->taskSshExec('remote.example.com')
