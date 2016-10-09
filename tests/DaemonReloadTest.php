@@ -2,25 +2,21 @@
 /**
  * This file is part of RoboSystemService.
  *
- * @author      Aitor García Martínez (Falc) <aitor.falc@gmail.com>
- * @copyright   2015 Aitor García Martínez (Falc) <aitor.falc@gmail.com>
- *
  * @author      Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
  * @copyright   2016 Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
- *
  * @license     MIT
  */
 
 namespace Falc\Robo\Service\Test;
 
-use Falc\Robo\Service\Restart;
+use Falc\Robo\Service\Start;
 use Falc\Robo\Service\Test\BaseTestCase;
 use Robo\Result;
 
 /**
- * Restart tests.
+ * Daemon reload tests.
  */
-class RestartTest extends BaseTestCase
+class DaemonReloadTest extends BaseTestCase
 {
     protected $builder;
     protected $factory;
@@ -35,69 +31,52 @@ class RestartTest extends BaseTestCase
     {
         $this->setExpectedException('\InvalidArgumentException');
 
-        $task = $this->taskServiceRestart(null, 'service1', $this->factory)
+        $task = $this->taskServiceDaemonReload(null, $this->factory)
             ->getCommand();
     }
 
-    public function testWithoutService()
+    public function testDaemonReload()
     {
-        // It must call restart() without service
+        // It must call daemonReload()
         $this->builder
             ->expects($this->once())
-            ->method('restart')
-            ->with($this->equalTo(null));
+            ->method('daemonReload');
 
-        $this->taskServiceRestart(null, null, $this->factory)
+        $this->taskServiceDaemonReload(null, $this->factory)
             ->serviceManager('myservicemanager')
-            ->getCommand();
-    }
-
-    public function testRestart()
-    {
-        $service = 'service1';
-
-        // It must call restart()
-        $this->builder
-            ->expects($this->once())
-            ->method('restart')
-            ->with($this->equalTo($service));
-
-        $this->taskServiceRestart(null, null, $this->factory)
-            ->serviceManager('myservicemanager')
-            ->service($service)
             ->getCommand();
     }
 
     public function testQuiet()
     {
-        // It must call restart()
+        // It must call daemonReload()
         $this->builder
             ->expects($this->once())
-            ->method('restart');
+            ->method('daemonReload');
 
         // It must call quiet()
         $this->builder
             ->expects($this->once())
             ->method('quiet');
 
-        $this->taskServiceRestart(null, null, $this->factory)
+        $this->taskServiceDaemonReload(null, $this->factory)
             ->serviceManager('myservicemanager')
             ->getCommand();
     }
 
     public function testVerbose()
     {
-        // It must call restart()
+        // It must call daemonReload()
         $this->builder
             ->expects($this->once())
-            ->method('restart');
+            ->method('daemonReload');
 
         // It must NOT call quiet()
         $this->builder
             ->expects($this->never())
             ->method('quiet');
 
-        $this->taskServiceRestart(null, null, $this->factory)
+        $this->taskServiceDaemonReload(null, $this->factory)
             ->serviceManager('myservicemanager')
             ->verbose()
             ->getCommand();
@@ -105,22 +84,19 @@ class RestartTest extends BaseTestCase
 
     public function testOneLiner()
     {
-        $service = 'service1';
-
-        // It must call restart()
+        // It must call daemonReload()
         $this->builder
             ->expects($this->once())
-            ->method('restart')
-            ->with($this->equalTo($service));
+            ->method('daemonReload');
 
-        $this->taskServiceRestart('myservicemanager', $service, $this->factory)->getCommand();
+        $this->taskServiceDaemonReload('myservicemanager', $this->factory)->getCommand();
     }
 
     public function testRun()
     {
         // Task mock
-        $task = $this->getMockBuilder('Falc\Robo\Service\Restart')
-            ->setConstructorArgs([null, null, $this->factory])
+        $task = $this->getMockBuilder('Falc\Robo\Service\DaemonReload')
+            ->setConstructorArgs([null, $this->factory])
             ->setMethods(['executeCommand'])
             ->getMock();
 
@@ -132,7 +108,6 @@ class RestartTest extends BaseTestCase
 
         $task
             ->serviceManager('myservicemanager')
-            ->service('service1')
             ->run();
     }
 }

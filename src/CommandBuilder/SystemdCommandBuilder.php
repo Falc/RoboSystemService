@@ -4,6 +4,10 @@
  *
  * @author      Aitor García Martínez (Falc) <aitor.falc@gmail.com>
  * @copyright   2015 Aitor García Martínez (Falc) <aitor.falc@gmail.com>
+ *
+ * @author      Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ * @copyright   2016 Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ *
  * @license     MIT
  */
 
@@ -41,7 +45,7 @@ class SystemdCommandBuilder implements CommandBuilderInterface
     public function start($service)
     {
         if (empty($service)) {
-            throw new \Exception('No service selected to be started');
+            throw new \InvalidArgumentException('No service selected to be started');
         }
 
         $this->service = $service;
@@ -56,7 +60,7 @@ class SystemdCommandBuilder implements CommandBuilderInterface
     public function stop($service)
     {
         if (empty($service)) {
-            throw new \Exception('No service selected to be started');
+            throw new \InvalidArgumentException('No service selected to be started');
         }
 
         $this->service = $service;
@@ -71,7 +75,7 @@ class SystemdCommandBuilder implements CommandBuilderInterface
     public function restart($service)
     {
         if (empty($service)) {
-            throw new \Exception('No service selected to be started');
+            throw new \InvalidArgumentException('No service selected to be started');
         }
 
         $this->service = $service;
@@ -86,7 +90,7 @@ class SystemdCommandBuilder implements CommandBuilderInterface
     public function enable($service)
     {
         if (empty($service)) {
-            throw new \Exception('No service selected to be enabled');
+            throw new \InvalidArgumentException('No service selected to be enabled');
         }
 
         $this->service = $service;
@@ -101,11 +105,21 @@ class SystemdCommandBuilder implements CommandBuilderInterface
     public function disable($service)
     {
         if (empty($service)) {
-            throw new \Exception('No service selected to be disabled');
+            throw new \InvalidArgumentException('No service selected to be disabled');
         }
 
         $this->service = $service;
         $this->action = 'disable';
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function daemonReload()
+    {
+        $this->action = 'daemon-reload';
 
         return $this;
     }

@@ -4,6 +4,10 @@
  *
  * @author      Aitor García Martínez (Falc) <aitor.falc@gmail.com>
  * @copyright   2015 Aitor García Martínez (Falc) <aitor.falc@gmail.com>
+ *
+ * @author      Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ * @copyright   2016 Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ *
  * @license     MIT
  */
 
@@ -29,7 +33,7 @@ class EnableTest extends BaseTestCase
 
     public function testWithoutServiceManager()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
 
         $task = $this->taskServiceEnable(null, null, $this->factory)
             ->getCommand();

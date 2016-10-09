@@ -4,6 +4,10 @@
  *
  * @author      Aitor García Martínez (Falc) <aitor.falc@gmail.com>
  * @copyright   2015 Aitor García Martínez (Falc) <aitor.falc@gmail.com>
+ *
+ * @author      Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ * @copyright   2016 Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ *
  * @license     MIT
  */
 
@@ -21,7 +25,7 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
     protected function createCommandBuilderMock()
     {
         $mock = $this->getMockBuilder('Falc\Robo\Service\CommandBuilder\CommandBuilderInterface')
-            ->setMethods(['start', 'stop', 'restart', 'enable', 'disable', 'quiet', 'getCommand'])
+            ->setMethods(['start', 'stop', 'restart', 'enable', 'disable', 'daemonReload', 'quiet', 'getCommand'])
             ->getMock();
 
         $mock
@@ -42,6 +46,10 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
 
         $mock
             ->method('disable')
+            ->will($this->returnValue($mock));
+
+        $mock
+            ->method('daemonReload')
             ->will($this->returnValue($mock));
 
         $mock

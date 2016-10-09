@@ -4,6 +4,10 @@
  *
  * @author      Aitor García Martínez (Falc) <aitor.falc@gmail.com>
  * @copyright   2015 Aitor García Martínez (Falc) <aitor.falc@gmail.com>
+ *
+ * @author      Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ * @copyright   2016 Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ *
  * @license     MIT
  */
 
@@ -17,6 +21,9 @@ use Falc\Robo\Service\Test\BaseTestCase;
  */
 class SystemdCommandBuilderTest extends BaseTestCase
 {
+    /**
+     * @var SystemdCommandBuilder
+     */
     protected $systemd;
 
     protected function setUp()
@@ -96,6 +103,15 @@ class SystemdCommandBuilderTest extends BaseTestCase
 
         $command = $this->systemd->getCommand();
         $expected = 'systemctl disable service1';
+        $this->assertEquals($expected, $command);
+    }
+
+    public function testDaemonReload()
+    {
+        $this->systemd->daemonReload();
+
+        $command = $this->systemd->getCommand();
+        $expected = 'systemctl daemon-reload';
         $this->assertEquals($expected, $command);
     }
 

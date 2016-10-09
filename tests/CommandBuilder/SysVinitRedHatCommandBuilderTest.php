@@ -4,11 +4,16 @@
  *
  * @author      Aitor García Martínez (Falc) <aitor.falc@gmail.com>
  * @copyright   2016 Aitor García Martínez (Falc) <aitor.falc@gmail.com>
+ *
+ * @author      Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ * @copyright   2016 Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ *
  * @license     MIT
  */
 
 namespace Falc\Robo\Service\Test\CommandBuilder;
 
+use Falc\Robo\Service\CommandBuilder\SysVinitCommandBuilder;
 use Falc\Robo\Service\CommandBuilder\SysVinitRedHatCommandBuilder;
 use Falc\Robo\Service\Test\BaseTestCase;
 
@@ -17,6 +22,9 @@ use Falc\Robo\Service\Test\BaseTestCase;
  */
 class SysVinitRedHatCommandBuilderTest extends BaseTestCase
 {
+    /**
+     * @var SysVinitCommandBuilder
+     */
     protected $sysvinit;
 
     protected function setUp()
@@ -97,6 +105,15 @@ class SysVinitRedHatCommandBuilderTest extends BaseTestCase
         $command = $this->sysvinit->getCommand();
         $expected = 'chkconfig service1 off';
         $this->assertEquals($expected, $command);
+    }
+
+    /**
+     * @expectedException \BadMethodCallException
+     * @expectedExceptionMessage Action "daemon-reload" not supported for SysVinit
+     */
+    public function testDaemonReload()
+    {
+        $this->sysvinit->daemonReload();
     }
 
     public function testQuiet()

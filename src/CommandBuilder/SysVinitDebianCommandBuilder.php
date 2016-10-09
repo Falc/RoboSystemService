@@ -4,6 +4,10 @@
  *
  * @author      Aitor García Martínez (Falc) <aitor.falc@gmail.com>
  * @copyright   2016 Aitor García Martínez (Falc) <aitor.falc@gmail.com>
+ *
+ * @author      Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ * @copyright   2016 Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ *
  * @license     MIT
  */
 
@@ -20,7 +24,7 @@ class SysVinitDebianCommandBuilder extends SysVinitCommandBuilder
     public function enable($service)
     {
         if (empty($service)) {
-            throw new \Exception('No service selected to be enabled');
+            throw new \InvalidArgumentException('No service selected to be enabled');
         }
 
         $this->cmd = 'update-rc.d';
@@ -36,7 +40,7 @@ class SysVinitDebianCommandBuilder extends SysVinitCommandBuilder
     public function disable($service)
     {
         if (empty($service)) {
-            throw new \Exception('No service selected to be disabled');
+            throw new \InvalidArgumentException('No service selected to be disabled');
         }
 
         $this->cmd = 'update-rc.d';

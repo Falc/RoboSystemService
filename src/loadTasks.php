@@ -4,6 +4,10 @@
  *
  * @author      Aitor García Martínez (Falc) <aitor.falc@gmail.com>
  * @copyright   2015 Aitor García Martínez (Falc) <aitor.falc@gmail.com>
+ *
+ * @author      Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ * @copyright   2016 Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
+ *
  * @license     MIT
  */
 
@@ -19,9 +23,11 @@ trait loadTasks
     /**
      * Allows to start a service.
      *
-     * @param   string                          $serviceManager Service manager to use. Optional.
-     * @param   string                          $service        Service. Optional.
-     * @param   CommandBuilderFactoryInterface  $factory        CommandBuilder factory. Optional.
+     * @param   string                         $serviceManager Service manager to use. Optional.
+     * @param   string                         $service        Service. Optional.
+     * @param   CommandBuilderFactoryInterface $factory        CommandBuilder factory. Optional.
+     *
+     * @return Start
      */
     protected function taskServiceStart($serviceManager = null, $service = null, CommandBuilderFactoryInterface $factory = null)
     {
@@ -31,9 +37,11 @@ trait loadTasks
     /**
      * Allows to stop a service.
      *
-     * @param   string                          $serviceManager Service manager to use. Optional.
-     * @param   string                          $service        Service. Optional.
-     * @param   CommandBuilderFactoryInterface  $factory        CommandBuilder factory. Optional.
+     * @param   string                         $serviceManager Service manager to use. Optional.
+     * @param   string                         $service        Service. Optional.
+     * @param   CommandBuilderFactoryInterface $factory        CommandBuilder factory. Optional.
+     *
+     * @return Stop
      */
     protected function taskServiceStop($serviceManager = null, $service = null, CommandBuilderFactoryInterface $factory = null)
     {
@@ -43,9 +51,11 @@ trait loadTasks
     /**
      * Allows to restart a service.
      *
-     * @param   string                          $serviceManager Service manager to use. Optional.
-     * @param   string                          $service        Service. Optional.
-     * @param   CommandBuilderFactoryInterface  $factory        CommandBuilder factory. Optional.
+     * @param   string                         $serviceManager Service manager to use. Optional.
+     * @param   string                         $service        Service. Optional.
+     * @param   CommandBuilderFactoryInterface $factory        CommandBuilder factory. Optional.
+     *
+     * @return Restart
      */
     protected function taskServiceRestart($serviceManager = null, $service = null, CommandBuilderFactoryInterface $factory = null)
     {
@@ -55,9 +65,11 @@ trait loadTasks
     /**
      * Allows to enable a service.
      *
-     * @param   string                          $serviceManager Service manager to use. Optional.
-     * @param   string                          $service        Service. Optional.
-     * @param   CommandBuilderFactoryInterface  $factory        CommandBuilder factory. Optional.
+     * @param   string                         $serviceManager Service manager to use. Optional.
+     * @param   string                         $service        Service. Optional.
+     * @param   CommandBuilderFactoryInterface $factory        CommandBuilder factory. Optional.
+     *
+     * @return Enable
      */
     protected function taskServiceEnable($serviceManager = null, $service = null, CommandBuilderFactoryInterface $factory = null)
     {
@@ -67,12 +79,27 @@ trait loadTasks
     /**
      * Allows to disable a service.
      *
-     * @param   string                          $serviceManager Service manager to use. Optional.
-     * @param   string                          $service        Service. Optional.
-     * @param   CommandBuilderFactoryInterface  $factory        CommandBuilder factory. Optional.
+     * @param   string                         $serviceManager Service manager to use. Optional.
+     * @param   string                         $service        Service. Optional.
+     * @param   CommandBuilderFactoryInterface $factory        CommandBuilder factory. Optional.
+     *
+     * @return Disable
      */
     protected function taskServiceDisable($serviceManager = null, $service = null, CommandBuilderFactoryInterface $factory = null)
     {
         return new Disable($serviceManager, $service, $factory);
+    }
+
+    /**
+     * Allows to reload systemd manager configuration.
+     *
+     * @param   string                         $serviceManager Service manager to use. Optional.
+     * @param   CommandBuilderFactoryInterface $factory        CommandBuilder factory. Optional.
+     *
+     * @return DaemonReload
+     */
+    protected function taskServiceDaemonReload($serviceManager = null, CommandBuilderFactoryInterface $factory = null)
+    {
+        return new DaemonReload($serviceManager, $factory);
     }
 }
