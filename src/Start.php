@@ -33,6 +33,7 @@ class Start extends BaseTask implements CommandInterface
 {
     /**
      * {@inheritdoc}
+     *
      * @throws \Exception
      */
     public function getCommand()
@@ -52,6 +53,7 @@ class Start extends BaseTask implements CommandInterface
 
     /**
      * {@inheritdoc}
+     *
      * @throws \Exception
      */
     public function run()

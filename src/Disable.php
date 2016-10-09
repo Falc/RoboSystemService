@@ -33,6 +33,7 @@ class Disable extends BaseTask implements CommandInterface
 {
     /**
      * {@inheritdoc}
+     *
      * @throws \InvalidArgumentException
      */
     public function getCommand()
@@ -52,6 +53,7 @@ class Disable extends BaseTask implements CommandInterface
 
     /**
      * {@inheritdoc}
+     *
      * @throws \InvalidArgumentException
      */
     public function run()

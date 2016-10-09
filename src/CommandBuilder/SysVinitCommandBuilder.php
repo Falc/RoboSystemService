@@ -113,6 +113,7 @@ abstract class SysVinitCommandBuilder implements CommandBuilderInterface
 
     /**
      * {@inheritdoc}
+     *
      * @throws \BadMethodCallException
      */
     public function daemonReload()

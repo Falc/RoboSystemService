@@ -22,8 +22,8 @@ interface CommandBuilderInterface
      * Sets the action to "start" and specifies the service.
      *
      * @param   string $service Service to start.
-     *
      * @return  CommandBuilderInterface
+     *
      * @throws \InvalidArgumentException
      */
     public function start($service);
@@ -32,8 +32,8 @@ interface CommandBuilderInterface
      * Sets the action to "stop" and specifies the service.
      *
      * @param   string $service Service to stop.
-     *
      * @return  CommandBuilderInterface
+     *
      * @throws \InvalidArgumentException
      */
     public function stop($service);
@@ -42,8 +42,8 @@ interface CommandBuilderInterface
      * Sets the action to "restart" and specifies the service.
      *
      * @param   string $service Service to restart.
-     *
      * @return  CommandBuilderInterface
+     *
      * @throws \InvalidArgumentException
      */
     public function restart($service);
@@ -52,8 +52,8 @@ interface CommandBuilderInterface
      * Sets the action to "enable" and specifies the service.
      *
      * @param   string $service Service to enable.
-     *
      * @return  CommandBuilderInterface
+     *
      * @throws \InvalidArgumentException
      */
     public function enable($service);
@@ -64,6 +64,7 @@ interface CommandBuilderInterface
      * @param   string $service Service to disable.
      *
      * @return  CommandBuilderInterface
+     *
      * @throws \InvalidArgumentException
      */
     public function disable($service);

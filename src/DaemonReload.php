@@ -40,6 +40,7 @@ class DaemonReload extends BaseTask implements CommandInterface
 
     /**
      * {@inheritdoc}
+     *
      * @throws \InvalidArgumentException
      */
     public function getCommand()
@@ -59,6 +60,7 @@ class DaemonReload extends BaseTask implements CommandInterface
 
     /**
      * {@inheritdoc}
+     *
      * @throws \InvalidArgumentException
      */
     public function run()
