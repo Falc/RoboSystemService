@@ -158,7 +158,7 @@ $this->taskSshExec('remote.example.com')
 
 ### Disable
 
-Enabling a service:
+Disabling a service:
 
 ``` php
 $this->taskServiceDisable()
