@@ -125,6 +125,37 @@ $this->taskSshExec('remote.example.com')
     ->run();
 ```
 
+### Reload
+
+Reloading a service:
+
+``` php
+$this->taskServiceReload()
+    ->serviceManager('systemd')
+    ->service('service1')
+    ->run();
+```
+
+Compact form:
+
+```
+$this->taskServiceReload('systemd', 'service1')->run();
+```
+
+You can combine it with `taskSshExec()` to reload services in a remote server:
+
+```php
+$reloadTask = $this->taskServiceReload()
+    ->serviceManager('systemd')
+    ->service('service1');
+
+$this->taskSshExec('remote.example.com')
+    ->remoteDir('/home/user')
+    ->printed(false) // Do not display output
+    ->exec($reloadTask)
+    ->run();
+```
+
 ### Enable
 
 Enabling a service:
@@ -158,7 +189,7 @@ $this->taskSshExec('remote.example.com')
 
 ### Disable
 
-Enabling a service:
+Disabling a service:
 
 ``` php
 $this->taskServiceDisable()

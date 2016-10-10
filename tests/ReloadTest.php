@@ -16,9 +16,9 @@ namespace Falc\Robo\Service\Test;
 use Robo\Result;
 
 /**
- * Enable tests.
+ * Reload tests.
  */
-class EnableTest extends BaseTestCase
+class ReloadTest extends BaseTestCase
 {
     protected $builder;
     protected $factory;
@@ -33,34 +33,34 @@ class EnableTest extends BaseTestCase
     {
         $this->setExpectedException('\InvalidArgumentException');
 
-        $task = $this->taskServiceEnable(null, null, $this->factory)
+        $task = $this->taskServiceReload(null, 'service1', $this->factory)
             ->getCommand();
     }
 
     public function testWithoutService()
     {
-        // It must call enable() without service
+        // It must call reload() without service
         $this->builder
             ->expects($this->once())
-            ->method('enable')
+            ->method('reload')
             ->with($this->equalTo(null));
 
-        $this->taskServiceEnable(null, null, $this->factory)
+        $this->taskServiceReload(null, null, $this->factory)
             ->serviceManager('myservicemanager')
             ->getCommand();
     }
 
-    public function testEnable()
+    public function testReload()
     {
         $service = 'service1';
 
-        // It must call enable()
+        // It must call reload()
         $this->builder
             ->expects($this->once())
-            ->method('enable')
+            ->method('reload')
             ->with($this->equalTo($service));
 
-        $this->taskServiceEnable(null, null, $this->factory)
+        $this->taskServiceReload(null, null, $this->factory)
             ->serviceManager('myservicemanager')
             ->service($service)
             ->getCommand();
@@ -68,34 +68,34 @@ class EnableTest extends BaseTestCase
 
     public function testQuiet()
     {
-        // It must call enable()
+        // It must call reload()
         $this->builder
             ->expects($this->once())
-            ->method('enable');
+            ->method('reload');
 
         // It must call quiet()
         $this->builder
             ->expects($this->once())
             ->method('quiet');
 
-        $this->taskServiceEnable(null, null, $this->factory)
+        $this->taskServiceReload(null, null, $this->factory)
             ->serviceManager('myservicemanager')
             ->getCommand();
     }
 
     public function testVerbose()
     {
-        // It must call enable()
+        // It must call reload()
         $this->builder
             ->expects($this->once())
-            ->method('enable');
+            ->method('reload');
 
         // It must NOT call quiet()
         $this->builder
             ->expects($this->never())
             ->method('quiet');
 
-        $this->taskServiceEnable(null, null, $this->factory)
+        $this->taskServiceReload(null, null, $this->factory)
             ->serviceManager('myservicemanager')
             ->verbose()
             ->getCommand();
@@ -105,19 +105,19 @@ class EnableTest extends BaseTestCase
     {
         $service = 'service1';
 
-        // It must call enable()
+        // It must call reload()
         $this->builder
             ->expects($this->once())
-            ->method('enable')
+            ->method('reload')
             ->with($this->equalTo($service));
 
-        $this->taskServiceEnable('myservicemanager', $service, $this->factory)->getCommand();
+        $this->taskServiceReload('myservicemanager', $service, $this->factory)->getCommand();
     }
 
     public function testRun()
     {
         // Task mock
-        $task = $this->getMockBuilder('Falc\Robo\Service\Enable')
+        $task = $this->getMockBuilder('Falc\Robo\Service\Reload')
             ->setConstructorArgs([null, null, $this->factory])
             ->setMethods(['executeCommand'])
             ->getMock();

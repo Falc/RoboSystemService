@@ -13,8 +13,6 @@
 
 namespace Falc\Robo\Service\Test;
 
-use Falc\Robo\Service\Stop;
-use Falc\Robo\Service\Test\BaseTestCase;
 use Robo\Result;
 
 /**

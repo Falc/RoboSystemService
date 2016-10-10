@@ -63,6 +63,20 @@ trait loadTasks
     }
 
     /**
+     * Allows to reload a service.
+     *
+     * @param   string                         $serviceManager Service manager to use. Optional.
+     * @param   string                         $service        Service. Optional.
+     * @param   CommandBuilderFactoryInterface $factory        CommandBuilder factory. Optional.
+     *
+     * @return Reload
+     */
+    protected function taskServiceReload($serviceManager = null, $service = null, CommandBuilderFactoryInterface $factory = null)
+    {
+        return new Reload($serviceManager, $service, $factory);
+    }
+
+    /**
      * Allows to enable a service.
      *
      * @param   string                         $serviceManager Service manager to use. Optional.

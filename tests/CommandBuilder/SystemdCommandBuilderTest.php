@@ -33,7 +33,7 @@ class SystemdCommandBuilderTest extends BaseTestCase
 
     public function testStartWithoutService()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
         $this->systemd->start(null);
     }
 
@@ -48,7 +48,7 @@ class SystemdCommandBuilderTest extends BaseTestCase
 
     public function testStopWithoutService()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
         $this->systemd->stop(null);
     }
 
@@ -63,7 +63,7 @@ class SystemdCommandBuilderTest extends BaseTestCase
 
     public function testRestartWithoutService()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
         $this->systemd->restart(null);
     }
 
@@ -76,9 +76,24 @@ class SystemdCommandBuilderTest extends BaseTestCase
         $this->assertEquals($expected, $command);
     }
 
+    public function testReloadWithoutService()
+    {
+        $this->setExpectedException('\InvalidArgumentException');
+        $this->systemd->reload(null);
+    }
+
+    public function testReload()
+    {
+        $this->systemd->reload('service1');
+
+        $command = $this->systemd->getCommand();
+        $expected = 'systemctl reload service1';
+        $this->assertEquals($expected, $command);
+    }
+
     public function testEnableWithoutService()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
         $this->systemd->enable(null);
     }
 
@@ -93,7 +108,7 @@ class SystemdCommandBuilderTest extends BaseTestCase
 
     public function testDisableWithoutService()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
         $this->systemd->disable(null);
     }
 

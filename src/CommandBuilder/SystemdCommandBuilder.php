@@ -60,7 +60,7 @@ class SystemdCommandBuilder implements CommandBuilderInterface
     public function stop($service)
     {
         if (empty($service)) {
-            throw new \InvalidArgumentException('No service selected to be started');
+            throw new \InvalidArgumentException('No service selected to be stopped');
         }
 
         $this->service = $service;
@@ -75,11 +75,26 @@ class SystemdCommandBuilder implements CommandBuilderInterface
     public function restart($service)
     {
         if (empty($service)) {
-            throw new \InvalidArgumentException('No service selected to be started');
+            throw new \InvalidArgumentException('No service selected to be restarted');
         }
 
         $this->service = $service;
         $this->action = 'restart';
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function reload($service)
+    {
+        if (empty($service)) {
+            throw new \InvalidArgumentException('No service selected to be reloaded');
+        }
+
+        $this->service = $service;
+        $this->action = 'reload';
 
         return $this;
     }
