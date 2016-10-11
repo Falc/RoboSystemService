@@ -34,7 +34,7 @@ class SysVinitRedHatCommandBuilderTest extends BaseTestCase
 
     public function testStartWithoutService()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
         $this->sysvinit->start(null);
     }
 
@@ -49,7 +49,7 @@ class SysVinitRedHatCommandBuilderTest extends BaseTestCase
 
     public function testStopWithoutService()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
         $this->sysvinit->stop(null);
     }
 
@@ -64,7 +64,7 @@ class SysVinitRedHatCommandBuilderTest extends BaseTestCase
 
     public function testRestartWithoutService()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
         $this->sysvinit->restart(null);
     }
 
@@ -77,9 +77,24 @@ class SysVinitRedHatCommandBuilderTest extends BaseTestCase
         $this->assertEquals($expected, $command);
     }
 
+    public function testReloadWithoutService()
+    {
+        $this->setExpectedException('\InvalidArgumentException');
+        $this->sysvinit->reload(null);
+    }
+
+    public function testReload()
+    {
+        $this->sysvinit->reload('service1');
+
+        $command = $this->sysvinit->getCommand();
+        $expected = '/etc/init.d/service1 reload';
+        $this->assertEquals($expected, $command);
+    }
+
     public function testEnableWithoutService()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
         $this->sysvinit->enable(null);
     }
 
@@ -94,7 +109,7 @@ class SysVinitRedHatCommandBuilderTest extends BaseTestCase
 
     public function testDisableWithoutService()
     {
-        $this->setExpectedException('\Exception');
+        $this->setExpectedException('\InvalidArgumentException');
         $this->sysvinit->disable(null);
     }
 

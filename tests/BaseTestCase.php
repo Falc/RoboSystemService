@@ -25,7 +25,7 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
     protected function createCommandBuilderMock()
     {
         $mock = $this->getMockBuilder('Falc\Robo\Service\CommandBuilder\CommandBuilderInterface')
-            ->setMethods(['start', 'stop', 'restart', 'enable', 'disable', 'daemonReload', 'quiet', 'getCommand'])
+            ->setMethods(['start', 'stop', 'restart', 'reload', 'enable', 'disable', 'daemonReload', 'quiet', 'getCommand'])
             ->getMock();
 
         $mock
@@ -38,6 +38,10 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
 
         $mock
             ->method('restart')
+            ->will($this->returnValue($mock));
+
+        $mock
+            ->method('reload')
             ->will($this->returnValue($mock));
 
         $mock

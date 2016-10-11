@@ -49,6 +49,16 @@ interface CommandBuilderInterface
     public function restart($service);
 
     /**
+     * Sets the action to "reload" and specifies the service.
+     *
+     * @param   string $service Service to reload.
+     * @return  CommandBuilderInterface
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function reload($service);
+
+    /**
      * Sets the action to "enable" and specifies the service.
      *
      * @param   string $service Service to enable.
