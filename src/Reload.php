@@ -2,9 +2,6 @@
 /**
  * This file is part of RoboSystemService.
  *
- * @author      Aitor García Martínez (Falc) <aitor.falc@gmail.com>
- * @copyright   2015 Aitor García Martínez (Falc) <aitor.falc@gmail.com>
- *
  * @author      Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
  * @copyright   2016 Polyvaniy Oleksii (alexndlm) <alexndlm@gmail.com>
  *
